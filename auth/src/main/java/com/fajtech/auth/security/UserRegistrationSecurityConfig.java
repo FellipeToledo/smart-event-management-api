@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+
 
 /**
  * @author Fellipe Toledo
@@ -22,13 +22,14 @@ public class UserRegistrationSecurityConfig {
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(AbstractHttpConfigurer::disable)
+        return http.cors()
+                .and().csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/register/**")
+                .requestMatchers("/api/v1/register/**")
                 .permitAll()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/users/**")
+                .requestMatchers("/api/v1/users/**")
                 .hasAnyAuthority("USER", "ADMIN")
                 .and().formLogin().and().build();
     }
