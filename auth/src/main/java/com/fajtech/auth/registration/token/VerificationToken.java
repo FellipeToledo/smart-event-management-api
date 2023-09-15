@@ -2,6 +2,7 @@ package com.fajtech.auth.registration.token;
 
 import com.fajtech.auth.User.User;
 import jakarta.persistence.*;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +26,7 @@ public class VerificationToken {
     private String token;
     private Date expirationTime;
 
-    private static final int EXPIRATION_TIME = 15;
+    private static final int EXPIRATION_TIME = 1;
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -43,7 +44,7 @@ public class VerificationToken {
         this.expirationTime = this.getTokenExpirationTime();
     }
 
-    private Date getTokenExpirationTime() {
+    public Date getTokenExpirationTime() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(new Date().getTime());
         calendar.add(Calendar.MINUTE, EXPIRATION_TIME);

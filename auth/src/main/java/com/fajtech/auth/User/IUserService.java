@@ -1,6 +1,7 @@
 package com.fajtech.auth.User;
 
 import com.fajtech.auth.registration.RegistrationRequest;
+import com.fajtech.auth.registration.token.VerificationToken;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,4 +18,6 @@ public interface IUserService {
     void saveUserVerificationToken(User theUser, String verificationToken);
 
     String validateToken(String theToken);
+
+    VerificationToken generateNewVerificationToken(String oldToken);
 }

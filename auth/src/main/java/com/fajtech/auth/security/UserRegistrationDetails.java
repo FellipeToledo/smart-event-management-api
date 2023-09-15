@@ -1,7 +1,9 @@
 package com.fajtech.auth.security;
 
 import com.fajtech.auth.User.User;
+
 import lombok.Data;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

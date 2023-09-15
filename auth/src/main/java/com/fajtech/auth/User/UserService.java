@@ -4,13 +4,13 @@ import com.fajtech.auth.exception.UserAlreadyExistsException;
 import com.fajtech.auth.registration.RegistrationRequest;
 import com.fajtech.auth.registration.token.VerificationToken;
 import com.fajtech.auth.registration.token.VerificationTokenRepository;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author Fellipe Toledo
@@ -65,11 +65,20 @@ public class UserService implements IUserService {
         User user = token.getUser();
         Calendar calendar = Calendar.getInstance();
         if ((token.getExpirationTime().getTime() - calendar.getTime().getTime()) <= 0){
-            tokenRepository.delete(token);
-            return "Token already expired";
+            return "Verification link already expired," +
+                    " Please, click the link below to receive a new verification link";
         }
         user.setEnabled(true);
         userRepository.save(user);
         return "valid";
+    }
+
+    @Override
+    public VerificationToken generateNewVerificationToken(String oldToken) {
+        VerificationToken verificationToken = tokenRepository.findByToken(oldToken);
+        VerificationToken verificationTokenTime = new VerificationToken();
+        verificationToken.setToken(UUID.randomUUID().toString());
+        verificationToken.setExpirationTime(verificationTokenTime.getTokenExpirationTime());
+        return tokenRepository.save(verificationToken);
     }
 }
