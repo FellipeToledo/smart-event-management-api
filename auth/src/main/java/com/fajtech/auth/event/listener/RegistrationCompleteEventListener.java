@@ -4,6 +4,7 @@ import com.fajtech.auth.event.RegistrationCompleteEvent;
 import com.fajtech.auth.User.User;
 import com.fajtech.auth.User.UserService;
 
+import com.fajtech.auth.registration.token.TokenService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
@@ -26,7 +27,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class RegistrationCompleteEventListener implements ApplicationListener<RegistrationCompleteEvent> {
 
-    private final UserService userService;
+    private final TokenService tokenService;
     private final JavaMailSender mailSender;
     private  User theUser;
     @Override
@@ -41,7 +42,7 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         String verificationToken = UUID.randomUUID().toString();
 
         // save the verification token for the user
-        userService.saveUserVerificationToken(theUser, verificationToken );
+        tokenService.saveUserVerificationToken(theUser, verificationToken );
 
         // Build the verification URL tobe sent to the user
         String url = event.getApplicationUrl()+"/api/v1/register/verifyEmail?token="+verificationToken;

@@ -4,6 +4,7 @@ import com.fajtech.auth.User.User;
 import com.fajtech.auth.User.UserService;
 import com.fajtech.auth.event.RegistrationCompleteEvent;
 import com.fajtech.auth.event.listener.RegistrationCompleteEventListener;
+import com.fajtech.auth.registration.token.TokenService;
 import com.fajtech.auth.registration.token.VerificationToken;
 import com.fajtech.auth.registration.token.VerificationTokenRepository;
 
@@ -26,6 +27,7 @@ import java.io.UnsupportedEncodingException;
 @RequestMapping("/api/v1/register")
 public class RegistrationController {
 
+    private final TokenService tokenService;
     private final UserService userService;
     private final ApplicationEventPublisher publisher;
     private final VerificationTokenRepository tokenRepository;
@@ -48,7 +50,7 @@ public class RegistrationController {
         if (theToken.getUser().isEnabled()){
             return "This account has already been verified, please, login.";
         }
-        String verificationResult = userService.validateToken(token);
+        String verificationResult = tokenService.validateToken(token);
         if (verificationResult.equalsIgnoreCase("valid")){
             return "Email verified successfully. Now you can login to your account";
         }
@@ -57,7 +59,7 @@ public class RegistrationController {
 
     @GetMapping("/resend-verification-email")
     public String resendVerificationAccount(@RequestParam("token") String oldToken, final HttpServletRequest servletRequest) throws MessagingException, UnsupportedEncodingException {
-        VerificationToken verificationToken = userService.generateNewVerificationToken(oldToken);
+        VerificationToken verificationToken = tokenService.generateNewVerificationToken(oldToken);
         User theUser = verificationToken.getUser();
         resendVerificationAccountEmail(theUser, applicationUrl(servletRequest), verificationToken);
         return "A new verification link hs been sent to your email," +
