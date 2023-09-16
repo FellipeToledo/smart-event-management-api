@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -16,12 +17,13 @@ import java.util.UUID;
 public class TokenService implements ITokenService{
     private final VerificationTokenRepository tokenRepository;
     private final UserRepository userRepository;
+    private static final int EXPIRATION_TIME = 1;
     @Override
     public void saveUserVerificationToken(User theUser, String token) {
         var verificationToken = new VerificationToken(token, theUser);
+        verificationToken.setExpirationTime(getTokenExpirationTime());
         tokenRepository.save(verificationToken);
     }
-
     @Override
     public String validateToken(String theToken) {
         VerificationToken token = tokenRepository.findByToken(theToken);
@@ -38,13 +40,18 @@ public class TokenService implements ITokenService{
         userRepository.save(user);
         return "valid";
     }
-
     @Override
     public VerificationToken generateNewVerificationToken(String oldToken) {
         VerificationToken verificationToken = tokenRepository.findByToken(oldToken);
-        VerificationToken verificationTokenTime = new VerificationToken();
         verificationToken.setToken(UUID.randomUUID().toString());
-        verificationToken.setExpirationTime(verificationTokenTime.getTokenExpirationTime());
+        verificationToken.setExpirationTime(getTokenExpirationTime());
         return tokenRepository.save(verificationToken);
+    }
+    @Override
+    public Date getTokenExpirationTime() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(new Date().getTime());
+        calendar.add(Calendar.MINUTE, EXPIRATION_TIME);
+        return new Date(calendar.getTime().getTime());
     }
 }

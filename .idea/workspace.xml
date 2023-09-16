@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2db79702-74d9-49a7-bc22-f88206a5addc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/token/ITokenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/token/TokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/User/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/User/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/User/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/User/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/event/listener/RegistrationCompleteEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/event/listener/RegistrationCompleteEventListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/token/ITokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/token/ITokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/token/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/token/TokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/token/VerificationToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/fajtech/auth/registration/token/VerificationToken.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

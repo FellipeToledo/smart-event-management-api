@@ -26,7 +26,6 @@ import java.io.UnsupportedEncodingException;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/register")
 public class RegistrationController {
-
     private final TokenService tokenService;
     private final UserService userService;
     private final ApplicationEventPublisher publisher;
