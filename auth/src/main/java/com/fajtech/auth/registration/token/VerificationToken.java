@@ -4,8 +4,8 @@ import com.fajtech.auth.User.User;
 import jakarta.persistence.*;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -23,7 +23,6 @@ public class VerificationToken {
     private Long id;
     private String token;
     public Date expirationTime;
-
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;

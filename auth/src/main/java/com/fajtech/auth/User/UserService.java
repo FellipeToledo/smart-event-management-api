@@ -2,7 +2,6 @@ package com.fajtech.auth.User;
 
 import com.fajtech.auth.exception.UserAlreadyExistsException;
 import com.fajtech.auth.registration.RegistrationRequest;
-import com.fajtech.auth.registration.token.VerificationToken;
 import com.fajtech.auth.registration.token.VerificationTokenRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -36,10 +35,10 @@ public class UserService implements IUserService {
                    "User with e-mail "+request.email() + "already exists");
        }
        var newUser = new User();
-       newUser.setFirstName(request.firstName());
-       newUser.setLastName(request.lastName());
+       newUser.setUserName(request.userName());
        newUser.setEmail(request.email());
        newUser.setPassword(passwordEncoder.encode(request.password()));
+       newUser.setConfirmPassword(passwordEncoder.encode(request.confirmPassword()));
        newUser.setRole(request.role());
         return userRepository.save(newUser);
     }
