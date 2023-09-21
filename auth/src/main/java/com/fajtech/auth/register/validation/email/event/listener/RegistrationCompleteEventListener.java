@@ -1,10 +1,9 @@
-package com.fajtech.auth.event.listener;
+package com.fajtech.auth.register.validation.email.event.listener;
 
-import com.fajtech.auth.event.RegistrationCompleteEvent;
-import com.fajtech.auth.User.User;
-import com.fajtech.auth.User.UserService;
+import com.fajtech.auth.register.validation.email.event.RegistrationCompleteEvent;
+import com.fajtech.auth.register.User.User;
 
-import com.fajtech.auth.registration.token.TokenService;
+import com.fajtech.auth.register.validation.token.TokenService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 

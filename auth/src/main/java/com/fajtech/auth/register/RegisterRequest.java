@@ -1,7 +1,7 @@
-package com.fajtech.auth.registration;
+package com.fajtech.auth.register;
 
-import com.fajtech.auth.registration.validation.PasswordMatching;
-import com.fajtech.auth.registration.validation.StrongPassword;
+import com.fajtech.auth.register.validation.password.PasswordMatching;
+import com.fajtech.auth.register.validation.password.StrongPassword;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -14,7 +14,7 @@ import jakarta.validation.constraints.Size;
         confirmPassword = "confirmPassword",
         message = "Password and Confirm Password must be matched!"
 )
-public record RegistrationRequest(
+public record RegisterRequest(
         @NotBlank
         @Size(min = 3, max = 20)
         String userName,

@@ -1,4 +1,4 @@
-package com.fajtech.auth.exception;
+package com.fajtech.auth.register.exception;
 
 /**
  * @author Fellipe Toledo

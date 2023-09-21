@@ -1,6 +1,6 @@
-package com.fajtech.auth.event;
+package com.fajtech.auth.register.validation.email.event;
 
-import com.fajtech.auth.User.User;
+import com.fajtech.auth.register.User.User;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.context.ApplicationEvent;

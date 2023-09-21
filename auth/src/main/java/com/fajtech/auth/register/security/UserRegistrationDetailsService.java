@@ -1,6 +1,6 @@
-package com.fajtech.auth.security;
+package com.fajtech.auth.register.security;
 
-import com.fajtech.auth.User.UserRepository;
+import com.fajtech.auth.register.User.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

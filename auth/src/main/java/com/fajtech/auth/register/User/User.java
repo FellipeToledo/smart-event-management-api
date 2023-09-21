@@ -1,4 +1,4 @@
-package com.fajtech.auth.User;
+package com.fajtech.auth.register.User;
 
 import jakarta.persistence.*;
 

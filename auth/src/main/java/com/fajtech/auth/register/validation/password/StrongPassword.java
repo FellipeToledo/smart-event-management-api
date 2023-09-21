@@ -1,4 +1,4 @@
-package com.fajtech.auth.registration.validation;
+package com.fajtech.auth.register.validation.password;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

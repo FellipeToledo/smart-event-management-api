@@ -1,4 +1,4 @@
-package com.fajtech.auth.security;
+package com.fajtech.auth.register.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

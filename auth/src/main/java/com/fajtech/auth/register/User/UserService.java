@@ -1,8 +1,8 @@
-package com.fajtech.auth.User;
+package com.fajtech.auth.register.User;
 
-import com.fajtech.auth.exception.UserAlreadyExistsException;
-import com.fajtech.auth.registration.RegistrationRequest;
-import com.fajtech.auth.registration.token.VerificationTokenRepository;
+import com.fajtech.auth.register.exception.UserAlreadyExistsException;
+import com.fajtech.auth.register.RegisterRequest;
+import com.fajtech.auth.register.validation.token.TokenRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +19,7 @@ import java.util.*;
 public class UserService implements IUserService {
 
     private final UserRepository userRepository;
-    private final VerificationTokenRepository tokenRepository;
+    private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -28,7 +28,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User registerUser(RegistrationRequest request) {
+    public User registerUser(RegisterRequest request) {
        Optional<User> user = this.findByEmail((request.email()));
        if (user.isPresent()){
            throw new UserAlreadyExistsException(

@@ -1,6 +1,6 @@
-package com.fajtech.auth.registration.token;
+package com.fajtech.auth.register.validation.token;
 
-import com.fajtech.auth.User.User;
+import com.fajtech.auth.register.User.User;
 
 import java.util.Date;
 

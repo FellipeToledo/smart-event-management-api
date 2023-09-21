@@ -1,7 +1,7 @@
-package com.fajtech.auth.registration.token;
+package com.fajtech.auth.register.validation.token;
 
-import com.fajtech.auth.User.User;
-import com.fajtech.auth.User.UserRepository;
+import com.fajtech.auth.register.User.User;
+import com.fajtech.auth.register.User.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class TokenService implements ITokenService{
-    private final VerificationTokenRepository tokenRepository;
+    private final TokenRepository tokenRepository;
     private final UserRepository userRepository;
     private static final int EXPIRATION_TIME = 1;
     @Override

@@ -3,7 +3,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/registration-db
     username: postgres
-    password: Dev@010184
+    password:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -18,7 +18,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: smarteventapi@gmail.com
-    password: culcajbgsjvdxbul
+    password:
     properties:
       mail:
         smtp:

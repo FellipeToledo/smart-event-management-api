@@ -1,12 +1,12 @@
-package com.fajtech.auth.registration;
+package com.fajtech.auth.register;
 
-import com.fajtech.auth.User.User;
-import com.fajtech.auth.User.UserService;
-import com.fajtech.auth.event.RegistrationCompleteEvent;
-import com.fajtech.auth.event.listener.RegistrationCompleteEventListener;
-import com.fajtech.auth.registration.token.TokenService;
-import com.fajtech.auth.registration.token.VerificationToken;
-import com.fajtech.auth.registration.token.VerificationTokenRepository;
+import com.fajtech.auth.register.User.User;
+import com.fajtech.auth.register.User.UserService;
+import com.fajtech.auth.register.validation.email.event.RegistrationCompleteEvent;
+import com.fajtech.auth.register.validation.email.event.listener.RegistrationCompleteEventListener;
+import com.fajtech.auth.register.validation.token.TokenService;
+import com.fajtech.auth.register.validation.token.VerificationToken;
+import com.fajtech.auth.register.validation.token.TokenRepository;
 
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,17 +26,17 @@ import java.io.UnsupportedEncodingException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/register")
-public class RegistrationController {
+public class RegisterController {
     private final TokenService tokenService;
     private final UserService userService;
     private final ApplicationEventPublisher publisher;
-    private final VerificationTokenRepository tokenRepository;
+    private final TokenRepository tokenRepository;
     private final RegistrationCompleteEventListener eventListener;
     private final HttpServletRequest servletRequest;
 
     @PostMapping
-    public String registerUser(@Valid @RequestBody RegistrationRequest registrationRequest, final HttpServletRequest request) {
-        User user = userService.registerUser(registrationRequest);
+    public String registerUser(@Valid @RequestBody RegisterRequest registerRequest, final HttpServletRequest request) {
+        User user = userService.registerUser(registerRequest);
 
         // publish registration event
         publisher.publishEvent(new RegistrationCompleteEvent(user, applicationUrl(request)));

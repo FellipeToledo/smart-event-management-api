@@ -1,6 +1,6 @@
-package com.fajtech.auth.security;
+package com.fajtech.auth.register.security;
 
-import com.fajtech.auth.User.User;
+import com.fajtech.auth.register.User.User;
 
 import lombok.Data;
 
